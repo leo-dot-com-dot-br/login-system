@@ -12,6 +12,10 @@ export default function RegisterPage() {
   const router = useRouter();
 
   async function handleSubmit() {
+    if (!name || !email || !password) {
+      return setError("Preencha todos os campos!");
+    }
+
     if (password !== confirmPassword)
       return setError("As senhas não coincidem.");
 
@@ -38,6 +42,7 @@ export default function RegisterPage() {
           className=""
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
         <label htmlFor="">E-mail:</label>
         <input
@@ -45,6 +50,7 @@ export default function RegisterPage() {
           className=""
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <label htmlFor="">Senha:</label>
         <input
@@ -52,6 +58,7 @@ export default function RegisterPage() {
           className=""
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <label htmlFor="">Confirme a senha novamente:</label>
         <input
@@ -59,6 +66,7 @@ export default function RegisterPage() {
           className=""
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          required
         />
         {error && <p className="text-red-500">{error}</p>}
         <button onClick={handleSubmit}>Confirmar</button>
