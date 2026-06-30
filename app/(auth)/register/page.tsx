@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function RegisterPage() {
@@ -8,6 +9,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   async function handleSubmit() {
     if (password !== confirmPassword)
@@ -18,6 +20,13 @@ export default function RegisterPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
     });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return setError(data.error);
+    }
+    router.push("/login");
   }
 
   return (
