@@ -1,4 +1,9 @@
-export default function DashboardPage() {
+import { auth } from "@/lib/auth";
+
+export default async function DashboardPage() {
+  const session = await auth();
+
+  console.log(session);
   return (
     <>
       <h1 className="text-2xl uppercase">Bem vindo ao dashboard</h1>;

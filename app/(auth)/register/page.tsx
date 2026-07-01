@@ -1,5 +1,6 @@
 "use client";
 
+import { UserPlusIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -34,47 +35,80 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-500/50">
-      <div className="bg-slate-100 p-50 rounded-lg max-w-2xl mx-6 flex flex-col gap-5 shadow-lg shadow-black/30 text-center">
-        <h1>Registre-se</h1>
-        <label htmlFor="">Nome:</label>
-        <input
-          className=""
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <label htmlFor="">E-mail:</label>
-        <input
-          type="email"
-          className=""
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <label htmlFor="">Senha:</label>
-        <input
-          type="password"
-          className=""
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <label htmlFor="">Confirme a senha novamente:</label>
-        <input
-          type="password"
-          className=""
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-xl p-8">
+        <div className="flex items-center gap-2 mb-8">
+          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+            <UserPlusIcon size={16} className="text-white" />
+          </div>
+          <span className="text-sm font-medium text-gray-900">
+            Login System
+          </span>
+        </div>
+        <p className="text-xl font-medium text-gray-900 mb-1">Criar conta</p>
+        <p className="text-sm text-gray-400 mb-6">
+          Insira seus dados para continuar o cadastro
+        </p>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Nome:
+          </label>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nome"
+            className="w-full h-10 border border-gray-200 rounded-lg px-3 text-sm text-gray-900 outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            E-mail:
+          </label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="seuemail@email.com"
+            className="w-full h-10 border border-gray-200 rounded-lg px-3 text-sm text-gray-900 outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Senha:
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="********"
+            className="w-full h-10 border border-gray-200 rounded-lg px-3 text-sm text-gray-900 outline-none focus:border-blue-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Confirme a senha:
+          </label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="********"
+            className="w-full h-10 border border-gray-200 rounded-lg px-3 text-sm text-gray-900 outline-none focus:border-blue-500"
+          />
+        </div>
         {error && <p className="text-red-500">{error}</p>}
         <button
-          className="bg-slate-900 text-slate-100 rounded-lg"
+          className="w-full h-10 bg-blue-600 text-white rounded-lg text-sm font-medium mt-2 hover:bg-blue-700 transition-colors"
           onClick={handleSubmit}
         >
-          Confirmar
+          Criar conta
         </button>
+        <p className="text-center text-sm text-gray-400 mt-4">
+          Já tem uma conta?{" "}
+          <a href="/login" className="text-blue-600 hover:underline text-sm">
+            Entrar
+          </a>
+        </p>
       </div>
     </div>
   );
