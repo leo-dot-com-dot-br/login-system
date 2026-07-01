@@ -69,7 +69,12 @@ export default function RegisterPage() {
           required
         />
         {error && <p className="text-red-500">{error}</p>}
-        <button onClick={handleSubmit}>Confirmar</button>
+        <button
+          className="bg-slate-900 text-slate-100 rounded-lg"
+          onClick={handleSubmit}
+        >
+          Confirmar
+        </button>
       </div>
     </div>
   );
