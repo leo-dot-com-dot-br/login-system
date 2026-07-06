@@ -94,6 +94,9 @@ export default function RegisterPage() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="********"
             className="w-full h-10 border border-gray-200 rounded-lg px-3 text-sm text-gray-900 outline-none focus:border-blue-500"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleSubmit();
+            }}
           />
         </div>
         {error && <p className="text-red-500">{error}</p>}
